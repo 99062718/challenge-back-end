@@ -14,6 +14,24 @@
     <title>To do list</title>
 </head>
 <body>
-    
+    <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
+        <h1>LOGIN</h1>
+        <label for="loginEmail">Email:</label>
+        <input type="input" id="loginEmail" name="loginEmail"><br>
+        <label for="loginPassword">Password:</label>
+        <input type="input" id="loginPassword" name="loginPassword"><br>
+        <input type="submit" value="login">
+    </form>
+
+    <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
+        <h1>REGISTER ACCOUNT</h1>
+        <label for="registerUsername">Username:</label>
+        <input type="input" id="registerUsername" name="registerUsername"><br>
+        <label for="registerEmail">Email:</label>
+        <input type="input" id="registerEmail" name="registerEmail"><br>
+        <label for="registerPassword">Password:</label>
+        <input type="input" id="registerPassword" name="registerPassword"><br>
+        <input type="submit" value="register">
+    </form>
 </body>
 </html>
