@@ -33,5 +33,15 @@
         <input type="input" id="registerPassword" name="registerPassword"><br>
         <input type="submit" value="register">
     </form>
+
+    <?php
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        foreach($_POST as $key => $value){
+            if(empty($_POST[$key])){
+                echo "$key is empty!\n";
+            }
+        }
+    }
+    ?>
 </body>
 </html>
