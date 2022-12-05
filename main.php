@@ -1,5 +1,6 @@
 <?php
     include "connection.php";
+    include "quaries.php";
     $conn = DbConnect();
 ?>
 
@@ -20,7 +21,7 @@
         <input type="input" id="loginEmail" name="loginEmail"><br>
         <label for="loginPassword">Password:</label>
         <input type="input" id="loginPassword" name="loginPassword"><br>
-        <input type="submit" value="login">
+        <input type="submit" name="login" value="login">
     </form>
 
     <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
@@ -31,14 +32,16 @@
         <input type="input" id="registerEmail" name="registerEmail"><br>
         <label for="registerPassword">Password:</label>
         <input type="input" id="registerPassword" name="registerPassword"><br>
-        <input type="submit" value="register">
+        <input type="submit" name="register" value="register">
     </form>
 
     <?php
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $foundEmpty = false;
         foreach($_POST as $key => $value){
             if(empty($_POST[$key])){
                 echo "$key is empty!\n";
+                $foundEmpty = true;
             }
         }
     }
