@@ -1,9 +1,8 @@
 <?php
-    function checkInDB($conn, $table, $column, $data){
-        $quary = $conn->prepare("SELECT $column FROM $table WHERE $column=:data");
+    function fetchFromDb($conn, $table, $column, $data){
+        $quary = $conn->prepare("SELECT * FROM $table WHERE $column=:data");
         $quary->bindParam(":data", $data);
         $quary->execute();
-        $result = $quary->fetch();
-        return count($result) == 1;
+        return $quary->fetch();
     }
 ?>

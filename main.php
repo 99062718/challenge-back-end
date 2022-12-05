@@ -2,6 +2,7 @@
     include "connection.php";
     include "quaries.php";
     $conn = DbConnect();
+    var_dump(fetchFromDb($conn, "accounts", "username", $_POST['registerUsername']));
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +18,8 @@
 <body>
     <form method="post" action="<?php $_SERVER['PHP_SELF'];?>">
         <h1>LOGIN</h1>
-        <label for="loginEmail">Email:</label>
-        <input type="input" id="loginEmail" name="loginEmail"><br>
+        <label for="loginUsername">Username:</label>
+        <input type="input" id="loginUsername" name="loginUsername"><br>
         <label for="loginPassword">Password:</label>
         <input type="input" id="loginPassword" name="loginPassword"><br>
         <input type="submit" name="login" value="login">
@@ -28,8 +29,6 @@
         <h1>REGISTER ACCOUNT</h1>
         <label for="registerUsername">Username:</label>
         <input type="input" id="registerUsername" name="registerUsername"><br>
-        <label for="registerEmail">Email:</label>
-        <input type="input" id="registerEmail" name="registerEmail"><br>
         <label for="registerPassword">Password:</label>
         <input type="input" id="registerPassword" name="registerPassword"><br>
         <input type="submit" name="register" value="register">
@@ -40,8 +39,15 @@
         $foundEmpty = false;
         foreach($_POST as $key => $value){
             if(empty($_POST[$key])){
-                echo "$key is empty!\n";
+                echo "$key is empty! <br>";
                 $foundEmpty = true;
+            }
+        }
+
+        if(!($foundEmpty)){
+            if($_POST["register"]){
+                $name = $_POST['registerName'];
+                if(fetchFromDb($conn, "accounts", "username", $_POST['registerUsername'])){echo "$name has already been taken!";}
             }
         }
     }
