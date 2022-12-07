@@ -50,7 +50,16 @@
                 if(fetchFromDb($conn, "accounts", "username", $_POST['registerUsername'])){
                     echo "$name has already been taken!";
                 } else {
-                    insertIntoDb($conn, "accounts", [$_POST['registerUsername'], $_POST['registerPassword']]);\
+                    insertIntoDb($conn, "accounts", [$_POST['registerUsername'], $_POST['registerPassword']]);
+                }
+            } else {
+                $fectchedData = fetchFromDb($conn, "accounts", "username", $_POST['loginUsername']);
+                if(!($fectchedData)){
+                    echo "username is invalid!";
+                } elseif($fectchedData["password"] != $_POST['loginPassword']){
+                    echo "password is invalid!";
+                } else {
+                    echo "welcome aboard captain";
                 }
             }
         }
