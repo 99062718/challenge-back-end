@@ -2,7 +2,6 @@
     include "connection.php";
     include "quaries.php";
     $conn = DbConnect();
-    var_dump(fetchFromDb($conn, "accounts", "username", $_POST['registerUsername']));
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +58,10 @@
                 } elseif($fectchedData["password"] != $_POST['loginPassword']){
                     echo "password is invalid!";
                 } else {
-                    echo "welcome aboard captain";
+                    session_start();
+                    $_SESSION['username'] = $_POST['loginUsername'];
+                    header("Location: boardList.php");
+                    exit();
                 }
             }
         }
