@@ -46,8 +46,12 @@
 
         if(!($foundEmpty)){
             if($_POST["register"]){
-                $name = $_POST['registerName'];
-                if(fetchFromDb($conn, "accounts", "username", $_POST['registerUsername'])){echo "$name has already been taken!";}
+                $name = $_POST['registerUsername'];
+                if(fetchFromDb($conn, "accounts", "username", $_POST['registerUsername'])){
+                    echo "$name has already been taken!";
+                } else {
+                    insertIntoDb($conn, "accounts", [$_POST['registerUsername'], $_POST['registerPassword']]);
+                }
             }
         }
     }

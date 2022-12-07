@@ -5,4 +5,11 @@
         $quary->execute();
         return $quary->fetch();
     }
+
+    function insertIntoDb($conn, $table, $data){
+        $quary = $conn->prepare("INSERT INTO $table VALUES (:data1, :data2)");
+        $quary->bindParam(":data1", $data[0]);
+        $quary->bindParam(":data2", $data[1]);
+        $quare->execute();
+    }
 ?>
