@@ -1,0 +1,9 @@
+.boardListContainer{
+    border-radius: 5%;
+    border: 1%;
+    margin: 5%;
+    padding: 5%;
+    border-color: lightslategray;
+    width: 70vw;
+    height: 5vh;
+}
