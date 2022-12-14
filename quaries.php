@@ -3,7 +3,7 @@
         $quary = $conn->prepare("SELECT * FROM $table WHERE $column=:data");
         $quary->bindParam(":data", $data);
         $quary->execute();
-        return $quary->fetch();
+        return $quary->fetchAll();
     }
 
     function insertIntoDb($conn, $table, $data){

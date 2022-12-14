@@ -43,7 +43,7 @@
             }
         }
 
-        if(!($foundEmpty)){
+        if(!$foundEmpty){
             if($_POST["register"]){
                 $name = $_POST['registerUsername'];
                 if(fetchFromDb($conn, "accounts", "username", $_POST['registerUsername'])){
@@ -53,9 +53,9 @@
                 }
             } else {
                 $fectchedData = fetchFromDb($conn, "accounts", "username", $_POST['loginUsername']);
-                if(!($fectchedData)){
+                if(!$fectchedData){
                     echo "username is invalid!";
-                } elseif($fectchedData["password"] != $_POST['loginPassword']){
+                } elseif($fectchedData[0]["password"] != $_POST['loginPassword']){
                     echo "password is invalid!";
                 } else {
                     session_start();
